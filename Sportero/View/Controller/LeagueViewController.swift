@@ -8,18 +8,21 @@
 import UIKit
 
 class LeagueViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
-    var leagues : Leagues?
-    let network = NetworkServices()
     @IBOutlet weak var tableView: UITableView!
+    var leaguesViewModel : LeaguesViewModel!
     var sport : String?
+    var leagues : Leagues?
+//    let network = NetworkServices()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
-        network.fetchLeaguesResult(sport: sport!){[weak self](result) in
-                DispatchQueue.main.async {
-                    self?.leagues  = result
-                    self?.tableView.reloadData()
-                }
+        leaguesViewModel = LeaguesViewModel()
+        leaguesViewModel.getLeaguesResult(sportType: sport!)
+        leaguesViewModel.bindResultToLeagueViewController = {() in
+            DispatchQueue.main.async {
+                self.leagues  = self.leaguesViewModel.leaguesResult
+                self.tableView.reloadData()
+            }
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

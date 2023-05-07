@@ -51,7 +51,9 @@ class TeamDetailsViewController: UIViewController ,UITableViewDelegate , UITable
     }
 
     @IBAction func addToFavourites(_ sender: Any) {
-        FavouriteItems.favouriteItems.InsertItem(favouriteName: (team?.team_name)!, favouriteId: (team?.team_key)!, sportType: sportType!)
+        var teamDetailsViewModel = TeamDetailsViewModel()
+        teamDetailsViewModel.insertTeam(favouriteName: (team?.team_name)!, favouriteId: (team?.team_key)!, sportType: sportType!)
+//        FavouriteItems.favouriteItems.InsertItem(favouriteName: (team?.team_name)!, favouriteId: (team?.team_key)!, sportType: sportType!)
         btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
 
     }

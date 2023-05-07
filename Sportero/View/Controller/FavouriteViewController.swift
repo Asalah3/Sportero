@@ -10,6 +10,7 @@ import CoreData
 
 class FavouriteViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
     @IBOutlet weak var tableView: UITableView!
+    var favouriteViewModel : FavouriteViewModel!
     var favouritesList : [NSManagedObject]?
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
@@ -17,14 +18,14 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
-        
-        favouritesList = FavouriteItems.favouriteItems.fetchFavouriteItems()
-        tableView.reloadData()
-
+        favouriteViewModel = FavouriteViewModel()
+        favouriteViewModel.getFavouritesResult()
+        favouritesList = favouriteViewModel.Result
+        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favouritesList!.count
+        return favouritesList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,7 +48,8 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         if editingStyle == .delete {
             let alert : UIAlertController = UIAlertController(title: "Warnning", message: "Do You Want To Delete \(favouriteName)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive , handler: { action in
-                FavouriteItems.favouriteItems.deleteItem(favouriteItem: favouriteItem!)
+                self.favouriteViewModel.deleteFavouriteItem(favouriteItem: favouriteItem!)
+                self.favouriteViewModel.getFavouritesResult()
                 self.favouritesList?.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }))
@@ -71,10 +73,10 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             navigationController?.pushViewController(tennisPlayerDetailsViewController, animated: true)
         }else{
             let teamDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
-            let network = NetworkServices()
-            network.fetchSingleTeamResult(sport: favouriteSport, teamId: favouriteId){[weak self] (result) in
+            favouriteViewModel.getTeamResult(sportType: favouriteSport, teamId: favouriteId)
+            favouriteViewModel.bindResultToFavouriteViewController = {[weak self]() in
                 DispatchQueue.main.async {
-                    let team = result?.result[0]
+                    let team = self?.favouriteViewModel.teamResult.result[0]
                     teamDetailsViewController.team = team
                     teamDetailsViewController.sportType = favouriteSport
                     teamDetailsViewController.flag = true

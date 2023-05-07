@@ -32,14 +32,15 @@ class FavouriteItems{
           print("Error saving")
         }
     }
+    
     func deleteItem(favouriteItem : NSManagedObject){
-                do {
-                    context?.delete(favouriteItem)
-                    try context?.save()
-                  } catch {
-                    
-                    print("Failed")
-                }
+        do {
+            context?.delete(favouriteItem)
+            try context?.save()
+        } catch {
+            print("Failed")
+            
+        }
     }
     
     func fetchFavouriteItems() -> [NSManagedObject]{

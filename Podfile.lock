@@ -1,0 +1,30 @@
+PODS:
+  - Kingfisher (7.6.2)
+  - lottie-ios (3.2.3)
+  - ReachabilitySwift (5.0.0)
+  - SDWebImage (5.15.5):
+    - SDWebImage/Core (= 5.15.5)
+  - SDWebImage/Core (5.15.5)
+
+DEPENDENCIES:
+  - Kingfisher (~> 7.0)
+  - lottie-ios
+  - ReachabilitySwift
+  - SDWebImage (~> 5.0)
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
+    - lottie-ios
+    - ReachabilitySwift
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
+
+PODFILE CHECKSUM: 68a4f53a20cbf4b711a0f78ac0c0fe49cc996ef9
+
+COCOAPODS: 1.12.0

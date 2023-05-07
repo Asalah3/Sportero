@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , UICollectionViewDelegateFlowLayout , UICollectionViewDataSource {
-    
+    var leagueDetailsViewModel :LeaguesDetailsViewModel!
     var network = NetworkServices()
     var upComingEvents : Fixtures?
     var latestResults : Livescore?
@@ -20,6 +20,11 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
     @IBOutlet weak var UpComingCollectionView: UICollectionView!
     @IBOutlet weak var latestResultCollectionView: UICollectionView!
     @IBOutlet weak var teamsCollectionView: UICollectionView!
+    override func viewWillAppear(_ animated: Bool) {
+        UpComingCollectionView.reloadData()
+        latestResultCollectionView.reloadData()
+        teamsCollectionView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = UICollectionViewFlowLayout()
@@ -33,42 +38,47 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
         let layout3 = UICollectionViewFlowLayout()
         layout3.scrollDirection = .vertical
         self.latestResultCollectionView.collectionViewLayout = layout3
-        
-            network.fetchFixturesResult(sport: sport!, leagueId: leagueId!){[weak self](result) in
-                DispatchQueue.main.async {
-                    self?.upComingEvents  = result
-                    result?.result?.forEach { element in
-                        if self?.sport == "tennis"{
-                            self!.tennisTeams.append(element.first_player_key!)
-                            self!.tennisTeams.append(element.second_player_key!)
-                            self?.teamsCollectionView.reloadData()
-                        }
+        leagueDetailsViewModel = LeaguesDetailsViewModel()
+        leagueDetailsViewModel.getUpComingEvents(sportType: sport!, leagueId: leagueId!)
+        leagueDetailsViewModel.bindUpComingEventsToLeagueDetailsViewController = {() in
+            DispatchQueue.main.async {
+                self.upComingEvents = self.leagueDetailsViewModel.upComingEvents
+                self.upComingEvents?.result?.forEach { element in
+                    if self.sport == "tennis"{
+                        self.tennisTeams.append(element.first_player_key!)
+                        self.tennisTeams.append(element.second_player_key!)
+                        self.teamsCollectionView.reloadData()
                     }
-                    self?.UpComingCollectionView.reloadData()
                 }
+                self.UpComingCollectionView.reloadData()
             }
+        }
         if sport == "cricket"{
-            network.fetchCricketLivescoreResult(leagueId: leagueId!){[weak self](result) in
+            leagueDetailsViewModel.getCricketLatestResult(leagueId: leagueId!)
+            leagueDetailsViewModel.bindCricketLatestResultsToLeagueDetailsViewController = {() in
                 DispatchQueue.main.async {
-                    self?.cricketLatestResults  = result
-                    self?.latestResultCollectionView.reloadData()
+                    self.cricketLatestResults = self.leagueDetailsViewModel.cricketLatestResults
+                    self.latestResultCollectionView.reloadData()
                 }
             }
         }else{
-            network.fetchLiveScoreResult(sport: sport!, leagueId: leagueId!){[weak self](result) in
+            leagueDetailsViewModel.getLatestResult(sportType: sport!, leagueId: leagueId!)
+            leagueDetailsViewModel.bindLatestResultsToLeagueDetailsViewController = {() in
                 DispatchQueue.main.async {
-                    self?.latestResults  = result
-                    self?.latestResultCollectionView.reloadData()
+                    self.latestResults = self.leagueDetailsViewModel.latestResults
+                    self.latestResultCollectionView.reloadData()
                 }
             }
         }
-           
-            network.fetchTeamsResult(sport: sport!, leagueId: leagueId!){[weak self](result) in
-                DispatchQueue.main.async {
-                    self?.teams = result
-                    self?.teamsCollectionView.reloadData()
+        leagueDetailsViewModel.getTeams(sportType: sport!, leagueId: leagueId!)
+        leagueDetailsViewModel.bindTeamsToLeagueDetailsViewController = {() in
+            DispatchQueue.main.async {
+                if self.sport != "tennis"{
+                    self.teams = self.leagueDetailsViewModel.teams
                 }
+                self.teamsCollectionView.reloadData()
             }
+        }
         
     }
     

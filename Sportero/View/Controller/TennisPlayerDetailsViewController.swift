@@ -15,7 +15,7 @@ class TennisPlayerDetailsViewController: UIViewController {
     @IBOutlet weak var playerImage: UIImageView!
     @IBOutlet weak var playerBD: UILabel!
     @IBOutlet weak var btn: UIButton!
-    
+    var tennisPlayerDetailsViewModel : TennisPlayerDetailsViewModel!
     var playerId = 0
     var network = NetworkServices()
     var player : TennisPlayer?
@@ -25,10 +25,11 @@ class TennisPlayerDetailsViewController: UIViewController {
         if flag == true {
             btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
-        network.fetchTennisPlayerResult(playerId: playerId){[weak self](result) in
-            DispatchQueue.main.async { [self] in
-                
-                self?.player = result
+        tennisPlayerDetailsViewModel = TennisPlayerDetailsViewModel()
+        tennisPlayerDetailsViewModel.getTennisPlayerResult(playerId: playerId)
+        tennisPlayerDetailsViewModel.bindResultToTennisPlayerDetailsViewController  = { [weak self]() in
+            DispatchQueue.main.async {
+                self?.player  = self?.tennisPlayerDetailsViewModel.playerResult
                 self?.playerName.text = self?.player?.result[0].playerName
                 self?.playerCountry.text = self?.player?.result[0].playerCountry ?? "There is no data"
                 self?.playerBD.text = self?.player?.result[0].playerBday ?? "There is no data"
@@ -37,14 +38,13 @@ class TennisPlayerDetailsViewController: UIViewController {
                     image1 = ""
                 }
                 self?.playerImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "player"))
-                
-                
             }
         }
     }
     
     @IBAction func addPlayerToFavourite(_ sender: Any) {
-        FavouriteItems.favouriteItems.InsertItem(favouriteName: (player?.result[0].playerName)!, favouriteId: (player?.result[0].playerKey)!, sportType: "tennis")
+//        FavouriteItems.favouriteItems.InsertItem(favouriteName: (player?.result[0].playerName)!, favouriteId: (player?.result[0].playerKey)!, sportType: "tennis")
+        tennisPlayerDetailsViewModel.insertPlayer(favouriteName: (player?.result[0].playerName)!, favouriteId: (player?.result[0].playerKey)!, sportType: "tennis")
         btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
 
     }
