@@ -23,6 +23,10 @@
 		C9AC19202A08317900391A61 /* TennisPlayerDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC191F2A08317900391A61 /* TennisPlayerDetailsViewModel.swift */; };
 		C9AC19222A083F5D00391A61 /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC19212A083F5D00391A61 /* FavouriteViewModel.swift */; };
 		C9AC19242A08481C00391A61 /* TeamDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC19232A08481C00391A61 /* TeamDetailsViewModel.swift */; };
+		C9AC192C2A084F9900391A61 /* SporteroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC192B2A084F9900391A61 /* SporteroTests.swift */; };
+		C9AC19352A0850F200391A61 /* NetworkServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC19342A0850F200391A61 /* NetworkServicesTest.swift */; };
+		C9AC19372A086C1300391A61 /* MokeNetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC19362A086C1300391A61 /* MokeNetworkServices.swift */; };
+		C9AC193F2A087FB500391A61 /* MokeNetworkServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC193E2A087FB500391A61 /* MokeNetworkServicesTests.swift */; };
 		C9AE34872A01BE0300773E6C /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AE34862A01BE0300773E6C /* NetworkServices.swift */; };
 		C9BA75BB2A001CC800E33557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA75BA2A001CC800E33557 /* AppDelegate.swift */; };
 		C9BA75BD2A001CC800E33557 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA75BC2A001CC800E33557 /* SceneDelegate.swift */; };
@@ -41,6 +45,16 @@
 		C9F7A3A82A052FD100C5D0E1 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A3A72A052FD100C5D0E1 /* TeamDetailsViewController.swift */; };
 		C9F7A3AA2A053DA300C5D0E1 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A3A92A053DA300C5D0E1 /* PlayerTableViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9AC192D2A084F9900391A61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9BA75AF2A001CC800E33557 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9BA75B62A001CC800E33557;
+			remoteInfo = Sportero;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		01883A773EC0A960AA33999C /* Pods_Sportero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sportero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +75,11 @@
 		C9AC191F2A08317900391A61 /* TennisPlayerDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisPlayerDetailsViewModel.swift; sourceTree = "<group>"; };
 		C9AC19212A083F5D00391A61 /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
 		C9AC19232A08481C00391A61 /* TeamDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewModel.swift; sourceTree = "<group>"; };
+		C9AC19292A084F9900391A61 /* SporteroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SporteroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9AC192B2A084F9900391A61 /* SporteroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SporteroTests.swift; sourceTree = "<group>"; };
+		C9AC19342A0850F200391A61 /* NetworkServicesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServicesTest.swift; sourceTree = "<group>"; };
+		C9AC19362A086C1300391A61 /* MokeNetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokeNetworkServices.swift; sourceTree = "<group>"; };
+		C9AC193E2A087FB500391A61 /* MokeNetworkServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokeNetworkServicesTests.swift; sourceTree = "<group>"; };
 		C9AE34862A01BE0300773E6C /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		C9BA75B72A001CC800E33557 /* Sportero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sportero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BA75BA2A001CC800E33557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +102,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C9AC19262A084F9900391A61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9BA75B42A001CC800E33557 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,10 +157,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		C9AC192A2A084F9900391A61 /* SporteroTests */ = {
+			isa = PBXGroup;
+			children = (
+				C9AC192B2A084F9900391A61 /* SporteroTests.swift */,
+				C9AC19342A0850F200391A61 /* NetworkServicesTest.swift */,
+				C9AC19362A086C1300391A61 /* MokeNetworkServices.swift */,
+				C9AC193E2A087FB500391A61 /* MokeNetworkServicesTests.swift */,
+			);
+			path = SporteroTests;
+			sourceTree = "<group>";
+		};
 		C9BA75AE2A001CC800E33557 = {
 			isa = PBXGroup;
 			children = (
 				C9BA75B92A001CC800E33557 /* Sportero */,
+				C9AC192A2A084F9900391A61 /* SporteroTests */,
 				C9BA75B82A001CC800E33557 /* Products */,
 				21D73C94F8C1E40C93C43FEB /* Pods */,
 				BAC1CC96D6B10A90360B0FA5 /* Frameworks */,
@@ -145,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				C9BA75B72A001CC800E33557 /* Sportero.app */,
+				C9AC19292A084F9900391A61 /* SporteroTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,6 +267,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C9AC19282A084F9900391A61 /* SporteroTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9AC192F2A084F9900391A61 /* Build configuration list for PBXNativeTarget "SporteroTests" */;
+			buildPhases = (
+				C9AC19252A084F9900391A61 /* Sources */,
+				C9AC19262A084F9900391A61 /* Frameworks */,
+				C9AC19272A084F9900391A61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9AC192E2A084F9900391A61 /* PBXTargetDependency */,
+			);
+			name = SporteroTests;
+			productName = SporteroTests;
+			productReference = C9AC19292A084F9900391A61 /* SporteroTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C9BA75B62A001CC800E33557 /* Sportero */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9BA75CE2A001CCA00E33557 /* Build configuration list for PBXNativeTarget "Sportero" */;
@@ -257,6 +314,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					C9AC19282A084F9900391A61 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = C9BA75B62A001CC800E33557;
+					};
 					C9BA75B62A001CC800E33557 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -276,11 +337,19 @@
 			projectRoot = "";
 			targets = (
 				C9BA75B62A001CC800E33557 /* Sportero */,
+				C9AC19282A084F9900391A61 /* SporteroTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C9AC19272A084F9900391A61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9BA75B52A001CC800E33557 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,6 +406,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C9AC19252A084F9900391A61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9AC19352A0850F200391A61 /* NetworkServicesTest.swift in Sources */,
+				C9AC192C2A084F9900391A61 /* SporteroTests.swift in Sources */,
+				C9AC193F2A087FB500391A61 /* MokeNetworkServicesTests.swift in Sources */,
+				C9AC19372A086C1300391A61 /* MokeNetworkServices.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9BA75B32A001CC800E33557 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,6 +454,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C9AC192E2A084F9900391A61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9BA75B62A001CC800E33557 /* Sportero */;
+			targetProxy = C9AC192D2A084F9900391A61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		C9BA75C02A001CC800E33557 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -394,6 +482,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C9AC19302A084F9900391A61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Swift.SporteroTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sportero.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Sportero";
+			};
+			name = Debug;
+		};
+		C9AC19312A084F9900391A61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Swift.SporteroTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sportero.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Sportero";
+			};
+			name = Release;
+		};
 		C9BA75CC2A001CCA00E33557 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -567,6 +689,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C9AC192F2A084F9900391A61 /* Build configuration list for PBXNativeTarget "SporteroTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9AC19302A084F9900391A61 /* Debug */,
+				C9AC19312A084F9900391A61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C9BA75B22A001CC800E33557 /* Build configuration list for PBXProject "Sportero" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
