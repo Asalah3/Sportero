@@ -32,7 +32,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? FavouriteTableViewCell
         cell?.favouriteView.layer.cornerRadius = 25
         cell?.favouriteView.layer.borderWidth = 1
-        cell?.favouriteView.layer.borderColor = UIColor.blue.cgColor
+        cell?.favouriteView.layer.borderColor = UIColor.orange.cgColor
         let favouriteItem = favouritesList?[indexPath.row]
         let favouriteName = favouriteItem?.value(forKey: "favouriteName") as! String
         let favouriteSport = favouriteItem?.value(forKey: "sportType") as! String

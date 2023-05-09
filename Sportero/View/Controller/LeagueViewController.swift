@@ -33,6 +33,8 @@ class LeagueViewController: UIViewController , UITableViewDelegate , UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? FootballTableViewCell
         cell?.footballView.layer.cornerRadius = 25
         cell?.footballImage.layer.cornerRadius = 25
+        cell?.footballView.layer.borderWidth = 1
+        cell?.footballView.layer.borderColor = UIColor.orange.cgColor
         cell?.footballTitle.text = leagues?.result[indexPath.row].leagueName
         var image = leagues?.result[indexPath.row].leagueLogo
         if image == nil{

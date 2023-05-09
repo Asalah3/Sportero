@@ -10,25 +10,49 @@ import Reachability
 
 let reachability = try! Reachability()
 class SportsViewController: UIViewController {
+    @IBOutlet weak var switchMode: UISwitch!
     @IBOutlet weak var collectionView: UICollectionView!
     var sportsImages : [String] = ["football","basketball" , "tennis" , "cricket"]
     var sportsNames : [String] = ["Football","Basketball" , "Tennis" , "Cricket"]
     let network = NetworkServices()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.darkMode{
+            switchMode.setOn(true, animated: true)
+        }
+        else{
+            switchMode.setOn(false, animated: true)
+        }
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
 
     }
     
 
+    @IBAction func onClickSwitch(_ sender: Any) {
+        if #available(iOS 13.0, *){
+            let appDelegate = UIApplication.shared.windows.first
+            if (sender as AnyObject).isOn {
+                appDelegate?.overrideUserInterfaceStyle = .dark
+                UserDefaults.standard.darkMode = true
+
+                return
+            }else {
+                appDelegate?.overrideUserInterfaceStyle = .light
+                UserDefaults.standard.darkMode = false
+                return
+            }
+        }
+    }
 }
+
+
 extension SportsViewController : UICollectionViewDelegate , UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? SportsCollectionViewCell
         cell?.layer.borderWidth = 1
-        cell?.layer.cornerRadius = 23
-        cell?.layer.borderColor = UIColor.blue.cgColor
+        cell?.layer.cornerRadius = 25
+        cell?.layer.borderColor = UIColor.orange.cgColor
         cell?.sportName.text = sportsNames[indexPath.row]
         cell?.sportImage.image = UIImage(named: sportsImages[indexPath.row])!
         return cell!

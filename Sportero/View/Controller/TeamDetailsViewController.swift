@@ -22,7 +22,9 @@ class TeamDetailsViewController: UIViewController ,UITableViewDelegate , UITable
             btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         playersTableView.separatorStyle = .none
-        self.TeamName.layer.cornerRadius = 25
+        TeamName.layer.cornerRadius = 25
+        TeamName.layer.borderWidth = 1
+        TeamName.layer.borderColor = UIColor.orange.cgColor
         var image = team?.team_logo
         if image == nil{
             image = ""
@@ -51,7 +53,7 @@ class TeamDetailsViewController: UIViewController ,UITableViewDelegate , UITable
     }
 
     @IBAction func addToFavourites(_ sender: Any) {
-        var teamDetailsViewModel = TeamDetailsViewModel()
+        let teamDetailsViewModel = TeamDetailsViewModel()
         teamDetailsViewModel.insertTeam(favouriteName: (team?.team_name)!, favouriteId: (team?.team_key)!, sportType: sportType!)
 //        FavouriteItems.favouriteItems.InsertItem(favouriteName: (team?.team_name)!, favouriteId: (team?.team_key)!, sportType: sportType!)
         btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)

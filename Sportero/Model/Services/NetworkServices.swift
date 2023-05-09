@@ -110,7 +110,6 @@ class NetworkServices : NetworkServicesProtocol{
     
     func fetchLiveScoreResult(sport: String, leagueId: Int, compilitionHandler: @escaping (Livescore?) -> Void) {
         let url = URL(string: "https://apiv2.allsportsapi.com/\(sport)/?met=Livescore&leagueId=\(leagueId)&APIkey=963d29cf248e5645a1d194a9fca0c26304519aa57383aeadfc6bf6a954af3d92")
-        print(url)
         guard let newUrl = url else {
             return
         }

@@ -22,6 +22,9 @@ class TennisPlayerDetailsViewController: UIViewController {
     var flag : Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
+        playerName.layer.cornerRadius = 25
+        playerName.layer.borderWidth = 1
+        playerName.layer.borderColor = UIColor.orange.cgColor
         if flag == true {
             btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }

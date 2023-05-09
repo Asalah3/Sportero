@@ -104,7 +104,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
             let cell = UpComingCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? UpComingEventsCollectionViewCell
             cell?.layer.borderWidth = 1
             cell?.layer.cornerRadius = 25
-            cell?.layer.borderColor = UIColor.blue.cgColor
+            cell?.layer.borderColor = UIColor.orange.cgColor
             
             if sport == "tennis"{
                 var image1 = upComingEvents?.result?[indexPath.row].event_first_player_logo
@@ -126,7 +126,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 return cell!
             }
 //============================================================================================================================================
-            else if sport == "cricket" || sport == "basketball"{
+            else if sport == "cricket"{
                 
                 var image1 = upComingEvents?.result?[indexPath.row].event_home_team_logo
                 if image1 == nil{
@@ -141,14 +141,27 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 }
                 cell?.teamTwoImage.sd_setImage(with: URL(string:image2!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                 cell?.teamTwoLabel.text = upComingEvents?.result?[indexPath.row].event_away_team
-                if sport == "basketball"{
-                    cell?.date.text = upComingEvents?.result?[indexPath.row].event_date_start
-                }else{
-                    cell?.date.text = upComingEvents?.result?[indexPath.row].event_date
-                }
+                cell?.date.text = upComingEvents?.result?[indexPath.row].event_date_start!
                 cell?.time.text = upComingEvents?.result?[indexPath.row].event_time
                 return cell!
                 
+            }else if sport == "basketball" {
+                var image1 = upComingEvents?.result?[indexPath.row].event_home_team_logo
+                if image1 == nil{
+                    image1 = ""
+                }
+                cell?.teamOneImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
+                cell?.teamOneLabel.text = upComingEvents?.result?[indexPath.row].event_home_team
+                
+                var image2 = upComingEvents?.result?[indexPath.row].event_away_team_logo
+                if image2 == nil{
+                    image2 = ""
+                }
+                cell?.teamTwoImage.sd_setImage(with: URL(string:image2!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
+                cell?.teamTwoLabel.text = upComingEvents?.result?[indexPath.row].event_away_team
+                    cell?.date.text = upComingEvents?.result?[indexPath.row].event_date
+                cell?.time.text = upComingEvents?.result?[indexPath.row].event_time
+                return cell!
             }
 //============================================================================================================================================
             else{
@@ -180,7 +193,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
             let cell = latestResultCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? LatestResultCollectionViewCell
             cell?.layer.borderWidth = 1
             cell?.layer.cornerRadius = 25
-            cell?.layer.borderColor = UIColor.blue.cgColor
+            cell?.layer.borderColor = UIColor.orange.cgColor
             
             if sport == "tennis"{
                 
@@ -252,7 +265,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
         let cell2 = teamsCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? TeamsCollectionViewCell
         cell2?.layer.borderWidth = 1
         cell2?.layer.cornerRadius = (cell2?.frame.height)!/2
-        cell2?.layer.borderColor = UIColor.blue.cgColor
+        cell2?.layer.borderColor = UIColor.orange.cgColor
         if sport == "cricket" {
             var image1 = teams?.result[indexPath.row].team_logo
             if image1 == nil{
