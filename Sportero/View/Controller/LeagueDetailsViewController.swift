@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Lottie
 class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , UICollectionViewDelegateFlowLayout , UICollectionViewDataSource {
     var leagueDetailsViewModel :LeaguesDetailsViewModel!
     var network = NetworkServices()
@@ -17,6 +18,9 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
     var tennisTeams : [Int] = []
     var leagueId : Int?
     var sport : String?
+    @IBOutlet weak var noData: AnimationView!
+    @IBOutlet weak var noDataLatest: AnimationView!
+    @IBOutlet weak var noDataTeams: AnimationView!
     @IBOutlet weak var UpComingCollectionView: UICollectionView!
     @IBOutlet weak var latestResultCollectionView: UICollectionView!
     @IBOutlet weak var teamsCollectionView: UICollectionView!
@@ -24,9 +28,15 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
         UpComingCollectionView.reloadData()
         latestResultCollectionView.reloadData()
         teamsCollectionView.reloadData()
+        noDataTeams.isHidden = true
+        /*UpComingCollectionView.isHidden = true
+        noData.contentMode = .scaleAspectFit
+        noData.loopMode = .loop
+        noData.play()*/
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         self.UpComingCollectionView.collectionViewLayout = layout
@@ -43,6 +53,14 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
         leagueDetailsViewModel.bindUpComingEventsToLeagueDetailsViewController = {() in
             DispatchQueue.main.async {
                 self.upComingEvents = self.leagueDetailsViewModel.upComingEvents
+                if self.upComingEvents?.result?.count == nil{
+                    self.UpComingCollectionView.isHidden = true
+                    self.noData.isHidden = false
+                    self.noData.contentMode = .scaleAspectFit
+                    self.noData.loopMode = .loop
+                    self.noData.play()
+
+                }
                 self.upComingEvents?.result?.forEach { element in
                     if self.sport == "tennis"{
                         self.tennisTeams.append(element.first_player_key!)
@@ -50,13 +68,31 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                         self.teamsCollectionView.reloadData()
                     }
                 }
+                if self.sport == "tennis"{
+                    if self.tennisTeams.count == 0{
+                        self.teamsCollectionView.isHidden = true
+                        self.noDataTeams.isHidden = false
+                        self.noDataTeams.contentMode = .scaleAspectFit
+                        self.noDataTeams.loopMode = .loop
+                        self.noDataTeams.play()
+                    }
+                    
+                }
                 self.UpComingCollectionView.reloadData()
+                
             }
         }
         if sport == "cricket"{
             leagueDetailsViewModel.getCricketLatestResult(leagueId: leagueId!)
             leagueDetailsViewModel.bindCricketLatestResultsToLeagueDetailsViewController = {() in
                 DispatchQueue.main.async {
+                    if self.leagueDetailsViewModel.cricketLatestResults == nil {
+                        self.latestResultCollectionView.isHidden = true
+                        self.noDataLatest.isHidden = false
+                        self.noDataLatest.contentMode = .scaleAspectFit
+                        self.noDataLatest.loopMode = .loop
+                        self.noDataLatest.play()
+                    }
                     self.cricketLatestResults = self.leagueDetailsViewModel.cricketLatestResults
                     self.latestResultCollectionView.reloadData()
                 }
@@ -66,6 +102,14 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
             leagueDetailsViewModel.bindLatestResultsToLeagueDetailsViewController = {() in
                 DispatchQueue.main.async {
                     self.latestResults = self.leagueDetailsViewModel.latestResults
+                    if self.leagueDetailsViewModel.latestResults.result?.count == nil {
+                        self.latestResultCollectionView.isHidden = true
+                        self.noDataLatest.isHidden = false
+                        self.noDataLatest.contentMode = .scaleAspectFit
+                        self.noDataLatest.loopMode = .loop
+                        self.noDataLatest.play()
+                    }
+                    
                     self.latestResultCollectionView.reloadData()
                 }
             }
@@ -73,12 +117,35 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
         leagueDetailsViewModel.getTeams(sportType: sport!, leagueId: leagueId!)
         leagueDetailsViewModel.bindTeamsToLeagueDetailsViewController = {() in
             DispatchQueue.main.async {
+                self.teams = self.leagueDetailsViewModel.teams
                 if self.sport != "tennis"{
-                    self.teams = self.leagueDetailsViewModel.teams
+                    if self.teams?.result.count == nil{
+                        self.teamsCollectionView.isHidden = true
+                        self.noDataTeams.isHidden = false
+                        self.noDataTeams.contentMode = .scaleAspectFit
+                        self.noDataTeams.loopMode = .loop
+                        self.noDataTeams.play()
+                    }
                 }
+                /*else {
+                    if self.tennisTeams.count == 0{
+                        self.teamsCollectionView.isHidden = true
+                        self.noDataTeams.isHidden = false
+                        self.noDataTeams.contentMode = .scaleAspectFit
+                        self.noDataTeams.loopMode = .loop
+                        self.noDataTeams.play()
+                    }
+                }*/
                 self.teamsCollectionView.reloadData()
             }
         }
+        /*if self.tennisTeams.count != 0 {
+            self.teamsCollectionView.isHidden = false
+            /*self.noDataTeams.isHidden = false
+            self.noDataTeams.contentMode = .scaleAspectFit
+            self.noDataTeams.loopMode = .loop
+            self.noDataTeams.play()*/
+        }*/
         
     }
     
@@ -87,6 +154,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
             return upComingEvents?.result?.count ?? 0
         }else if collectionView == latestResultCollectionView{
             if sport == "cricket"{
+                
                 return cricketLatestResults?.result.count ?? 0
             }
             return latestResults?.result?.count ?? 0
@@ -187,7 +255,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
             }
             
             
-//*******************************************************************************************************************************************************************
+//************************************************************************************************************************************************
             
         }else if collectionView == latestResultCollectionView{
             let cell = latestResultCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? LatestResultCollectionViewCell
@@ -212,25 +280,26 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
 //============================================================================================================================================
             
             else if sport == "cricket"{
-                var image1 = cricketLatestResults?.result[indexPath.row].eventHomeTeamLogo
-                if image1 == nil{
-                    image1 = ""
-                }
-                cell?.teamOneImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
-                cell?.teamOneLabel.text = cricketLatestResults?.result[indexPath.row].eventHomeTeam
                 
-                var image2 = cricketLatestResults?.result[indexPath.row].eventAwayTeamLogo
-                if image2 == nil{
-                    image2 = ""
-                }
-                cell?.teamTwoImage.sd_setImage(with: URL(string:image2!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
-                cell?.teamTwoLabel.text = cricketLatestResults?.result[indexPath.row].eventAwayTeam
-                
-                cell?.dateLabel.text = cricketLatestResults?.result[indexPath.row].eventDateStart
-                cell?.timeLabel.text = cricketLatestResults?.result[indexPath.row].eventTime
-                cell?.scoreLabel.text = "\(cricketLatestResults?.result[indexPath.row].eventHomeFinalResult ?? "") - \(cricketLatestResults?.result[indexPath.row].eventAwayFinalResult ?? "")"
-                
-                return cell!
+                    var image1 = cricketLatestResults?.result[indexPath.row].eventHomeTeamLogo
+                    if image1 == nil{
+                        image1 = ""
+                    }
+                    cell?.teamOneImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
+                    cell?.teamOneLabel.text = cricketLatestResults?.result[indexPath.row].eventHomeTeam
+                    
+                    var image2 = cricketLatestResults?.result[indexPath.row].eventAwayTeamLogo
+                    if image2 == nil{
+                        image2 = ""
+                    }
+                    cell?.teamTwoImage.sd_setImage(with: URL(string:image2!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
+                    cell?.teamTwoLabel.text = cricketLatestResults?.result[indexPath.row].eventAwayTeam
+                    
+                    cell?.dateLabel.text = cricketLatestResults?.result[indexPath.row].eventDateStart
+                    cell?.timeLabel.text = cricketLatestResults?.result[indexPath.row].eventTime
+                    cell?.scoreLabel.text = "\(cricketLatestResults?.result[indexPath.row].eventHomeFinalResult ?? "") - \(cricketLatestResults?.result[indexPath.row].eventAwayFinalResult ?? "")"
+                    
+                    return cell!
             }
             
 //============================================================================================================================================
@@ -259,7 +328,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
             
         }
         
-        //*******************************************************************************************************************************************************************************
+//***************************************************************************************************************************************
 
         
         let cell2 = teamsCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? TeamsCollectionViewCell

@@ -50,15 +50,14 @@ class LeaguesDetailsViewModel{
     //Cricket latest Result
     func getCricketLatestResult(leagueId : Int){
         network.fetchCricketLivescoreResult(leagueId: leagueId){(data) in
-            guard let result = data else {return}
-            self.cricketLatestResults = result
+            self.cricketLatestResults = data
         }
     }
     // Teams
     func getTeams(sportType : String , leagueId : Int){
         network.fetchTeamsResult(sport: sportType, leagueId: leagueId){(data) in
-            guard let result = data else {return}
-            self.teams = result
+//            guard let result = data else {return}
+            self.teams = data
         }
     }
 }

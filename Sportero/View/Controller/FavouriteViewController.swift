@@ -9,16 +9,6 @@ import UIKit
 import CoreData
 import ReachabilitySwift
 class FavouriteViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
-    func networkStatusDidChange(status: Reachability.NetworkStatus) {
-        switch status {
-             case .notReachable:
-                 debugPrint("ViewController: Network became unreachable")
-             case .reachableViaWiFi:
-                 debugPrint("ViewController: Network reachable through WiFi")
-             case .reachableViaWWAN:
-                 debugPrint("ViewController: Network reachable through Cellular Data")
-             }
-    }
     
     @IBOutlet weak var tableView: UITableView!
     var favouriteViewModel : FavouriteViewModel!
@@ -33,6 +23,13 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         favouriteViewModel = FavouriteViewModel()
         favouriteViewModel.getFavouritesResult()
         favouritesList = favouriteViewModel.Result
+        if favouritesList?.count == 0{
+            tableView.isHidden = true
+            let imgError = UIImageView(frame: CGRect(x: tableView.frame.width/4, y: tableView.frame.height / 2, width: tableView.frame.width/2, height: tableView.frame.height / 4))
+            imgError.image = UIImage(systemName: "icloud.slash")
+            imgError.tintColor = UIColor.orange
+            self.view.addSubview(imgError)
+        }
         self.tableView.reloadData()
     }
     
@@ -64,6 +61,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
                 self.favouriteViewModel.getFavouritesResult()
                 self.favouritesList?.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                self.tableView.reloadData()
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .default , handler: nil))
             

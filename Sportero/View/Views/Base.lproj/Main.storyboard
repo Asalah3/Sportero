@@ -486,6 +486,19 @@
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhC-2T-HWg" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="76" y="124.66666666666667" width="240" height="151.66666666666663"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="no_data_found"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hpz-O2-PQv" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="76" y="369.66666666666669" width="240" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="no_data_found"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jz7-lX-gtk">
                                 <rect key="frame" x="10" y="104.66666666666669" width="373.33333333333331" height="213"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -737,12 +750,26 @@
                                     <outlet property="delegate" destination="Wcg-sf-nmV" id="aVg-OE-j6d"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fX-XR-Ajo" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="81.666666666666671" y="607" width="196.33333333333331" height="106.66666666666663"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="no_data_found"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GQm-Fz-h08"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GQm-Fz-h08" firstAttribute="trailing" secondItem="koE-b8-pQI" secondAttribute="trailing" constant="73" id="2YT-7M-Uf2"/>
+                            <constraint firstItem="1fX-XR-Ajo" firstAttribute="height" secondItem="NZh-7A-qlL" secondAttribute="height" id="3Yr-92-zjA"/>
                             <constraint firstItem="NZh-7A-qlL" firstAttribute="leading" secondItem="GQm-Fz-h08" secondAttribute="leading" constant="10" id="7bG-Cb-6a0"/>
+                            <constraint firstItem="1fX-XR-Ajo" firstAttribute="leading" secondItem="R61-tn-YZS" secondAttribute="leading" multiplier="1.2" id="7n3-rA-aaN"/>
+                            <constraint firstItem="rhC-2T-HWg" firstAttribute="width" secondItem="GQm-Fz-h08" secondAttribute="width" multiplier="0.610687" id="B62-2I-2zh"/>
+                            <constraint firstItem="rhC-2T-HWg" firstAttribute="leading" secondItem="GQm-Fz-h08" secondAttribute="leading" constant="76" id="Ct8-dY-FOd"/>
+                            <constraint firstItem="rhC-2T-HWg" firstAttribute="height" secondItem="GQm-Fz-h08" secondAttribute="height" multiplier="0.2" id="E55-7T-FGC"/>
+                            <constraint firstItem="Hpz-O2-PQv" firstAttribute="leading" secondItem="GQm-Fz-h08" secondAttribute="leading" constant="76" id="Ehy-rT-vqR"/>
+                            <constraint firstItem="Hpz-O2-PQv" firstAttribute="width" secondItem="GQm-Fz-h08" secondAttribute="width" multiplier="0.610687" id="HGc-VY-8Nz"/>
+                            <constraint firstItem="Hpz-O2-PQv" firstAttribute="height" secondItem="GQm-Fz-h08" secondAttribute="height" multiplier="0.168643" id="JKN-oX-std"/>
                             <constraint firstItem="NZh-7A-qlL" firstAttribute="width" secondItem="GQm-Fz-h08" secondAttribute="width" multiplier="0.949109" id="NPm-Rb-RYc"/>
                             <constraint firstItem="jz7-lX-gtk" firstAttribute="width" secondItem="ZL1-av-aD5" secondAttribute="width" multiplier="0.95" id="NcG-Yc-E2M"/>
                             <constraint firstItem="R61-tn-YZS" firstAttribute="leading" secondItem="GQm-Fz-h08" secondAttribute="leading" constant="68" id="P6I-AL-wXN"/>
@@ -750,6 +777,7 @@
                             <constraint firstItem="koE-b8-pQI" firstAttribute="leading" secondItem="GQm-Fz-h08" secondAttribute="leading" constant="72" id="Pig-YD-1gs"/>
                             <constraint firstItem="GQm-Fz-h08" firstAttribute="trailing" secondItem="9kV-s7-poU" secondAttribute="trailing" constant="77" id="RqS-ny-RI7"/>
                             <constraint firstItem="Tg8-wP-EFv" firstAttribute="height" secondItem="ZL1-av-aD5" secondAttribute="height" multiplier="0.23" id="SkG-SK-UZa"/>
+                            <constraint firstItem="1fX-XR-Ajo" firstAttribute="width" secondItem="GQm-Fz-h08" secondAttribute="width" multiplier="0.5" id="TNp-pc-3J8"/>
                             <constraint firstItem="jz7-lX-gtk" firstAttribute="leading" secondItem="GQm-Fz-h08" secondAttribute="leading" constant="10" id="TWh-LG-Evw"/>
                             <constraint firstItem="9kV-s7-poU" firstAttribute="leading" secondItem="GQm-Fz-h08" secondAttribute="leading" constant="68" id="Uox-P8-ZV6"/>
                             <constraint firstItem="9kV-s7-poU" firstAttribute="top" secondItem="jz7-lX-gtk" secondAttribute="bottom" constant="8" symbolic="YES" id="XoO-S3-ibh"/>
@@ -757,16 +785,22 @@
                             <constraint firstItem="Tg8-wP-EFv" firstAttribute="leading" secondItem="GQm-Fz-h08" secondAttribute="leading" constant="20" id="ZUa-rJ-rCa"/>
                             <constraint firstItem="NZh-7A-qlL" firstAttribute="top" secondItem="R61-tn-YZS" secondAttribute="bottom" constant="9.0000000000001137" id="cze-kv-ajl"/>
                             <constraint firstItem="koE-b8-pQI" firstAttribute="top" secondItem="GQm-Fz-h08" secondAttribute="top" constant="7" id="hHH-w1-lYk"/>
+                            <constraint firstItem="rhC-2T-HWg" firstAttribute="top" secondItem="koE-b8-pQI" secondAttribute="bottom" constant="30" id="hwX-tw-MuC"/>
                             <constraint firstItem="GQm-Fz-h08" firstAttribute="trailing" secondItem="R61-tn-YZS" secondAttribute="trailing" constant="77" id="kru-Qc-kr7"/>
+                            <constraint firstItem="Hpz-O2-PQv" firstAttribute="top" secondItem="9kV-s7-poU" secondAttribute="bottom" constant="15" id="opg-qi-5da"/>
                             <constraint firstItem="Tg8-wP-EFv" firstAttribute="width" secondItem="ZL1-av-aD5" secondAttribute="width" multiplier="0.9" id="ssY-V4-D0F"/>
                             <constraint firstItem="jz7-lX-gtk" firstAttribute="top" secondItem="koE-b8-pQI" secondAttribute="bottom" constant="10.000000000000014" id="vVF-ne-iyV"/>
                             <constraint firstItem="Tg8-wP-EFv" firstAttribute="top" secondItem="9kV-s7-poU" secondAttribute="bottom" constant="7.3333333333333144" id="yEo-IT-8iN"/>
                             <constraint firstItem="R61-tn-YZS" firstAttribute="top" secondItem="Tg8-wP-EFv" secondAttribute="bottom" constant="10" id="ycz-A3-JdT"/>
+                            <constraint firstItem="1fX-XR-Ajo" firstAttribute="top" secondItem="R61-tn-YZS" secondAttribute="bottom" constant="10" id="ydC-y7-pPc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="UpComingCollectionView" destination="jz7-lX-gtk" id="ZaF-AT-IxK"/>
                         <outlet property="latestResultCollectionView" destination="Tg8-wP-EFv" id="Ekh-St-Wui"/>
+                        <outlet property="noData" destination="rhC-2T-HWg" id="0a5-Fq-Woa"/>
+                        <outlet property="noDataLatest" destination="Hpz-O2-PQv" id="Mjj-Bt-b4C"/>
+                        <outlet property="noDataTeams" destination="1fX-XR-Ajo" id="RuY-cs-J3G"/>
                         <outlet property="teamsCollectionView" destination="NZh-7A-qlL" id="Ah1-7y-eu1"/>
                     </connections>
                 </viewController>
@@ -1014,7 +1048,9 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="Hpz-O2-PQv"/>
         <designable name="ckg-Pt-K82"/>
+        <designable name="rhC-2T-HWg"/>
     </designables>
     <resources>
         <image name="background" width="2480" height="3508"/>

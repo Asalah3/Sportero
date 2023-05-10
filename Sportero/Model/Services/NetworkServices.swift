@@ -159,6 +159,7 @@ class NetworkServices : NetworkServicesProtocol{
         let task = session.dataTask(with: request){ data,response , error in
             do{
                 let result = try JSONDecoder().decode(CricketLivescore.self, from: data!)
+                print("\(result)")
                 compilitionHandler(result)
             }catch let error{
                 print("Livescore\(error.localizedDescription)")

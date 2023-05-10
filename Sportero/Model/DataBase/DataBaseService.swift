@@ -27,7 +27,6 @@ class FavouriteItems{
         newTeam.setValue(sportType, forKey: "sportType")
         do {
             try context?.save()
-            print("\(favouriteName) Inserted")
          } catch {
           print("Error saving")
         }
@@ -52,7 +51,6 @@ class FavouriteItems{
             let result = try context?.fetch(request)
             for data in result as! [NSManagedObject]{
                 favouritesList?.append(data)
-                print(data.value(forKey: "favouriteName") as! String)
             }
         } catch {
             print("Failed")
@@ -67,9 +65,7 @@ class FavouriteItems{
         favouritesList?.forEach{ data in
             let favId = data.value(forKey: "favouriteId") as! Int
             if favId == favouriteId{
-                result = true
-            }else{
-                result = false
+                result =  true
             }
         }
         return result

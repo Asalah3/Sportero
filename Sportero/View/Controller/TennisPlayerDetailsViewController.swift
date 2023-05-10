@@ -20,13 +20,23 @@ class TennisPlayerDetailsViewController: UIViewController {
     var network = NetworkServices()
     var player : TennisPlayer?
     var flag : Bool?
+    override func viewWillAppear(_ animated: Bool) {
+        let tennisPlayerDetailsViewModel = TennisPlayerDetailsViewModel()
+        if tennisPlayerDetailsViewModel.isExist(favouriteId: playerId){
+            btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            btn.isEnabled = false
+        }
+        else {
+            btn.isEnabled = true
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         playerName.layer.cornerRadius = 25
         playerName.layer.borderWidth = 1
         playerName.layer.borderColor = UIColor.orange.cgColor
         if flag == true {
-            btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            
         }
         tennisPlayerDetailsViewModel = TennisPlayerDetailsViewModel()
         tennisPlayerDetailsViewModel.getTennisPlayerResult(playerId: playerId)
@@ -46,9 +56,24 @@ class TennisPlayerDetailsViewController: UIViewController {
     }
     
     @IBAction func addPlayerToFavourite(_ sender: Any) {
-//        FavouriteItems.favouriteItems.InsertItem(favouriteName: (player?.result[0].playerName)!, favouriteId: (player?.result[0].playerKey)!, sportType: "tennis")
-        tennisPlayerDetailsViewModel.insertPlayer(favouriteName: (player?.result[0].playerName)!, favouriteId: (player?.result[0].playerKey)!, sportType: "tennis")
-        btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        
+        if tennisPlayerDetailsViewModel.isExist(favouriteId: playerId){
+            btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            btn.isEnabled = false
+        }
+        else {
+            let alert = UIAlertController(title: "Alert!", message: "Do you want to save this \(self.player?.result[0].playerName ?? "")",preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes",style: .default,handler: {(_: UIAlertAction!) in
+                self.tennisPlayerDetailsViewModel.insertPlayer(favouriteName: (self.player?.result[0].playerName)!, favouriteId: (self.player?.result[0].playerKey)!, sportType: "tennis")
+                self.btn.isEnabled = false
+                
+            }))
+            alert.addAction(UIAlertAction(title: "No",style: .default,handler: {(_: UIAlertAction!) in
+                alert.dismiss(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
 
     }
 }
