@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import Reachability
+//import Reachability
 
-let reachability = try! Reachability()
+//let reachability = try! Reachability()
 class SportsViewController: UIViewController {
     @IBOutlet weak var switchMode: UISwitch!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -65,45 +65,17 @@ extension SportsViewController : UICollectionViewDelegate , UICollectionViewData
         return CGSize(width: size, height: size)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // reachability.whenReachable = { _ in
-            if indexPath.row == 0{
-                let leagueViewController = self.storyboard?.instantiateViewController(withIdentifier: "LeagueViewController") as! LeagueViewController
-                print(self.sportsNames[indexPath.row])
-                leagueViewController.sport = "football"
-                self.navigationController?.pushViewController(leagueViewController, animated: true)
-            }else if indexPath.row == 1{
-                print(self.sportsNames[indexPath.row])
-                let leagueViewController = self.storyboard?.instantiateViewController(withIdentifier: "LeagueViewController") as! LeagueViewController
-                leagueViewController.sport = "basketball"
-                self.navigationController?.pushViewController(leagueViewController, animated: true)
-            }else if indexPath.row == 2{
-                let leagueViewController = self.storyboard?.instantiateViewController(withIdentifier: "LeagueViewController") as! LeagueViewController
-                print(self.sportsNames[indexPath.row])
-                leagueViewController.sport = "tennis"
-                self.navigationController?.pushViewController(leagueViewController, animated: true)
-
-            }else if indexPath.row == 3{
-                let leagueViewController = self.storyboard?.instantiateViewController(withIdentifier: "LeagueViewController") as! LeagueViewController
-                print(self.sportsNames[indexPath.row])
-                leagueViewController.sport = "cricket"
-                self.navigationController?.pushViewController(leagueViewController, animated: true)
-
-            }
-            
-                
-           // }
-        /*reachability.whenUnreachable = { _ in
+        if InternetConnection().isConnectedToNetwork() == true{
+            let leagueViewController = self.storyboard?.instantiateViewController(withIdentifier: "LeagueViewController") as! LeagueViewController
+            print(self.sportsNames[indexPath.row])
+            leagueViewController.sport = sportsImages[indexPath.row]
+            self.navigationController?.pushViewController(leagueViewController, animated: true)
+        }else{
             let alert = UIAlertController(title: "Warrning!", message: "There is no Internet Connection",preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok",style: .default,handler: {(_: UIAlertAction!) in
                 alert.dismiss(animated: true)
             }))
             self.present(alert, animated: true, completion: nil)
         }
-        do{
-            try reachability.startNotifier()
-        }catch{
-            print("Unable to start Notifier")
-        }*/
-        
     }
 }

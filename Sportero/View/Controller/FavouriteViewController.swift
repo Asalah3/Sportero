@@ -7,12 +7,24 @@
 
 import UIKit
 import CoreData
-
-class FavouriteViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
+import ReachabilitySwift
+class FavouriteViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
+    func networkStatusDidChange(status: Reachability.NetworkStatus) {
+        switch status {
+             case .notReachable:
+                 debugPrint("ViewController: Network became unreachable")
+             case .reachableViaWiFi:
+                 debugPrint("ViewController: Network reachable through WiFi")
+             case .reachableViaWWAN:
+                 debugPrint("ViewController: Network reachable through Cellular Data")
+             }
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     var favouriteViewModel : FavouriteViewModel!
     var favouritesList : [NSManagedObject]?
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
     override func viewDidLoad() {
@@ -66,21 +78,31 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         let favouriteItem = favouritesList?[indexPath.row]
         let favouriteId = favouriteItem?.value(forKey: "favouriteId") as! Int
         let favouriteSport = favouriteItem?.value(forKey: "sportType") as! String
-        if favouriteSport == "tennis"{
-            let tennisPlayerDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TennisPlayerDetailsViewController") as! TennisPlayerDetailsViewController
-            tennisPlayerDetailsViewController.playerId = favouriteId
-            tennisPlayerDetailsViewController.flag = true
-            navigationController?.pushViewController(tennisPlayerDetailsViewController, animated: true)
+        if InternetConnection().isConnectedToNetwork() == false
+        {
+            let alert = UIAlertController(title: "Warrning!", message: "There is no Internet Connection",preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok",style: .default,handler: {(_: UIAlertAction!) in
+                alert.dismiss(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
         }else{
-            let teamDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
-            favouriteViewModel.getTeamResult(sportType: favouriteSport, teamId: favouriteId)
-            favouriteViewModel.bindResultToFavouriteViewController = {[weak self]() in
-                DispatchQueue.main.async {
-                    let team = self?.favouriteViewModel.teamResult.result[0]
-                    teamDetailsViewController.team = team
-                    teamDetailsViewController.sportType = favouriteSport
-                    teamDetailsViewController.flag = true
-                    self?.navigationController?.pushViewController(teamDetailsViewController, animated: true)
+            if favouriteSport == "tennis"{
+                let tennisPlayerDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TennisPlayerDetailsViewController") as! TennisPlayerDetailsViewController
+                tennisPlayerDetailsViewController.playerId = favouriteId
+                tennisPlayerDetailsViewController.flag = true
+                navigationController?.pushViewController(tennisPlayerDetailsViewController, animated: true)
+            }else{
+                let teamDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
+                favouriteViewModel.getTeamResult(sportType: favouriteSport, teamId: favouriteId)
+                favouriteViewModel.bindResultToFavouriteViewController = {[weak self]() in
+                    DispatchQueue.main.async {
+                        let team = self?.favouriteViewModel.teamResult.result[0]
+                        teamDetailsViewController.team = team
+                        teamDetailsViewController.sportType = favouriteSport
+                        teamDetailsViewController.flag = true
+                        self?.navigationController?.pushViewController(teamDetailsViewController, animated: true)
+                    }
                 }
             }
         }

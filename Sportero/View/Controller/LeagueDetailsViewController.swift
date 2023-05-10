@@ -299,25 +299,33 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == teamsCollectionView {
-            if sport == "cricket" || sport == "basketball" {
-                let alert = UIAlertController(title: "Warrning!", message: "There is no data to display",preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok",style: .default,handler: {(_: UIAlertAction!) in
-                    alert.dismiss(animated: true)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }else if sport == "tennis" {
-                let tennisPlayerDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TennisPlayerDetailsViewController") as! TennisPlayerDetailsViewController
-                tennisPlayerDetailsViewController.playerId = tennisTeams[indexPath.row]
-                navigationController?.pushViewController(tennisPlayerDetailsViewController, animated: true)
-            }else{
-                let team = teams?.result[indexPath.row]
-                let teamDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
-                teamDetailsViewController.team = team
-                teamDetailsViewController.sportType = sport!
-                navigationController?.pushViewController(teamDetailsViewController, animated: true)
-            }
+        if InternetConnection().isConnectedToNetwork() == true{
             
+            if collectionView == teamsCollectionView {
+                if sport == "cricket" || sport == "basketball" {
+                    let alert = UIAlertController(title: "Warrning!", message: "There is no data to display",preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok",style: .default,handler: {(_: UIAlertAction!) in
+                        alert.dismiss(animated: true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }else if sport == "tennis" {
+                    let tennisPlayerDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TennisPlayerDetailsViewController") as! TennisPlayerDetailsViewController
+                    tennisPlayerDetailsViewController.playerId = tennisTeams[indexPath.row]
+                    navigationController?.pushViewController(tennisPlayerDetailsViewController, animated: true)
+                }else{
+                    let team = teams?.result[indexPath.row]
+                    let teamDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
+                    teamDetailsViewController.team = team
+                    teamDetailsViewController.sportType = sport!
+                    navigationController?.pushViewController(teamDetailsViewController, animated: true)
+                }
+            }
+        }else{
+            let alert = UIAlertController(title: "Warrning!", message: "There is no Internet Connection",preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok",style: .default,handler: {(_: UIAlertAction!) in
+                alert.dismiss(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

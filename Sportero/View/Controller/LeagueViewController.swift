@@ -45,11 +45,19 @@ class LeagueViewController: UIViewController , UITableViewDelegate , UITableView
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let leagueId = leagues?.result[indexPath.row].leagueKey
-        let leagueDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsViewController") as! LeagueDetailsViewController
-        leagueDetailsViewController.sport = sport
-        leagueDetailsViewController.leagueId = leagueId ?? 0
-        
-        navigationController?.pushViewController(leagueDetailsViewController, animated: true)
+        if InternetConnection().isConnectedToNetwork() == true{
+            let leagueDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsViewController") as! LeagueDetailsViewController
+            leagueDetailsViewController.sport = sport
+            leagueDetailsViewController.leagueId = leagueId ?? 0
+            
+            navigationController?.pushViewController(leagueDetailsViewController, animated: true)
+        }else{
+            let alert = UIAlertController(title: "Warrning!", message: "There is no Internet Connection",preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok",style: .default,handler: {(_: UIAlertAction!) in
+                alert.dismiss(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     
