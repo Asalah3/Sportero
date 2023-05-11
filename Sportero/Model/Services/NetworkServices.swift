@@ -26,7 +26,7 @@ class NetworkServices : NetworkServicesProtocol{
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request){ data,response , error in
             do{
-                let result = try JSONDecoder().decode(TennisPlayer.self, from: data!)
+                let result = try JSONDecoder().decode(TennisPlayer.self, from: data ?? Data())
                 compilitionHandler(result)
             }catch let error{
                 print(error.localizedDescription)
@@ -47,7 +47,7 @@ class NetworkServices : NetworkServicesProtocol{
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request){ data,response , error in
             do{
-                let result = try JSONDecoder().decode(Teams.self, from: data!)
+                let result = try JSONDecoder().decode(Teams.self, from: data ?? Data())
                 compilitionHandler(result)
             }catch let error{
                 print(error.localizedDescription)
@@ -68,7 +68,7 @@ class NetworkServices : NetworkServicesProtocol{
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request){ data,response , error in
             do{
-                let result = try JSONDecoder().decode(Teams.self, from: data!)
+                let result = try JSONDecoder().decode(Teams.self, from: data ?? Data())
                 compilitionHandler(result)
             }catch let error{
                 print("Teams \(error.localizedDescription)")
@@ -79,15 +79,6 @@ class NetworkServices : NetworkServicesProtocol{
         task.resume()
     }
     func fetchFixturesResult(sport : String,leagueId : Int ,compilitionHandler : @escaping (Fixtures?)-> Void) {
-//        let todayDate = Date()
-//        let calender = Calendar.current
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "YYYY-MM-dd"
-//        dateFormatter.locale = Locale(identifier: "en")
-//        let weekStart = calender.date(byAdding: .day, value: 10, to: todayDate)
-//        let today = dateFormatter.string(from: todayDate)
-//        let weekAhead = dateFormatter.string(from: weekStart!)
-        
         
         let url = URL(string: "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leagueId)&APIkey=963d29cf248e5645a1d194a9fca0c26304519aa57383aeadfc6bf6a954af3d92&from=\(DateUtils.getCurrentDate())&to=\(DateUtils.getToDate())")
         guard let newUrl = url else {
@@ -97,7 +88,7 @@ class NetworkServices : NetworkServicesProtocol{
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request){ data,response , error in
             do{
-                let result = try JSONDecoder().decode(Fixtures.self, from: data!)
+                let result = try JSONDecoder().decode(Fixtures.self, from: data ?? Data())
                 compilitionHandler(result)
             }catch let error{
                 print(error.localizedDescription)
@@ -117,7 +108,7 @@ class NetworkServices : NetworkServicesProtocol{
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request){ data,response , error in
             do{
-                let result = try JSONDecoder().decode(Livescore.self, from: data!)
+                let result = try JSONDecoder().decode(Livescore.self, from: data ?? Data())
                 compilitionHandler(result)
             }catch let error{
                 print("Livescore\(error.localizedDescription)")
@@ -138,7 +129,7 @@ class NetworkServices : NetworkServicesProtocol{
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request){ data,response , error in
             do{
-                let result = try JSONDecoder().decode(Leagues.self, from: data!)
+                let result = try JSONDecoder().decode(Leagues.self, from: data ?? Data())
                 compilitionHandler(result)
             }catch let error{
                 print(error.localizedDescription)
@@ -158,7 +149,7 @@ class NetworkServices : NetworkServicesProtocol{
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request){ data,response , error in
             do{
-                let result = try JSONDecoder().decode(CricketLivescore.self, from: data!)
+                let result = try JSONDecoder().decode(CricketLivescore.self, from: data ?? Data())
                 print("\(result)")
                 compilitionHandler(result)
             }catch let error{

@@ -19,7 +19,9 @@ class TennisPlayerDetailsViewModel{
             self.playerResult = result
         }
     }
-    
+    func deleteItemById(favouriteId : Int){
+        FavouriteItems.favouriteItems.deleteItemById(favouriteId: favouriteId)
+    }
     func insertPlayer(favouriteName : String , favouriteId : Int , sportType : String){
         FavouriteItems.favouriteItems.InsertItem(favouriteName: favouriteName, favouriteId: favouriteId, sportType: sportType)
     }

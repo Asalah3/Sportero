@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class LeagueViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
     @IBOutlet weak var tableView: UITableView!
@@ -49,6 +50,7 @@ class LeagueViewController: UIViewController , UITableViewDelegate , UITableView
             if image == nil{
                 image = ""
             }
+            cell?.footballImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
             cell?.footballImage.sd_setImage(with: URL(string:image!), placeholderImage: UIImage(named: sport!))
             return cell!
         }else{
@@ -57,6 +59,7 @@ class LeagueViewController: UIViewController , UITableViewDelegate , UITableView
             if image == nil{
                 image = ""
             }
+            cell?.footballImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
             cell?.footballImage.sd_setImage(with: URL(string:image!), placeholderImage: UIImage(named: sport!))
             return cell!
         }
@@ -78,8 +81,6 @@ class LeagueViewController: UIViewController , UITableViewDelegate , UITableView
             leagueDetailsViewController.sport = sport
             leagueDetailsViewController.leagueId = leagueId
             leagueDetailsViewController.leagueName = leagueName
-            
-            
             navigationController?.pushViewController(leagueDetailsViewController, animated: true)
         }else{
             let alert = UIAlertController(title: "Warrning!", message: "There is no Internet Connection",preferredStyle: .alert)

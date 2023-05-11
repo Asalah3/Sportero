@@ -10,7 +10,9 @@ class TeamDetailsViewModel{
     func insertTeam(favouriteName : String , favouriteId : Int , sportType : String){
         FavouriteItems.favouriteItems.InsertItem(favouriteName: favouriteName, favouriteId: favouriteId, sportType: sportType)
     }
-    
+    func deleteItemById(favouriteId : Int){
+        FavouriteItems.favouriteItems.deleteItemById(favouriteId: favouriteId)
+    }
     func isExist(favouriteId : Int) -> Bool{
         return FavouriteItems.favouriteItems.checkIfInserted(favouriteId: favouriteId)
     }

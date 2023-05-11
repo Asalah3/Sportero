@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TeamDetailsViewController: UIViewController ,UITableViewDelegate , UITableViewDataSource{
     @IBOutlet weak var TeamName: UILabel!
@@ -21,16 +22,14 @@ class TeamDetailsViewController: UIViewController ,UITableViewDelegate , UITable
         
         let teamDetailsViewModel = TeamDetailsViewModel()
         if teamDetailsViewModel.isExist(favouriteId: (team?.team_key)!){
-            btn.isEnabled = false
-        }
-        else {
-            btn.isEnabled = true
+            btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         if flag == true {
-            btn.isHidden = true
+//            btn.isHidden = true
         }
         
         playersTableView.separatorStyle = .none
@@ -57,6 +56,8 @@ class TeamDetailsViewController: UIViewController ,UITableViewDelegate , UITable
         if image == nil{
             image = ""
         }
+        cell?.playerImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
+
         cell?.playerImage.sd_setImage(with: URL(string:image!), placeholderImage: UIImage(named: "player"))
         return cell!
     }
@@ -67,12 +68,21 @@ class TeamDetailsViewController: UIViewController ,UITableViewDelegate , UITable
     @IBAction func addToFavourites(_ sender: Any) {
         let teamDetailsViewModel = TeamDetailsViewModel()
         if teamDetailsViewModel.isExist(favouriteId: (team?.team_key)!){
-            btn.isEnabled = false
+            let alert = UIAlertController(title: "Alert!", message: "Do you want to delete \(self.team?.team_name ?? "")",preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete",style: .destructive,handler: {(_: UIAlertAction!) in
+                teamDetailsViewModel.deleteItemById(favouriteId: (self.team?.team_key)!)
+                self.btn.setImage(UIImage(systemName: "heart"), for: .normal)
+            }))
+            alert.addAction(UIAlertAction(title: "No",style: .cancel,handler: {(_: UIAlertAction!) in
+                alert.dismiss(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
         }else{
-            let alert = UIAlertController(title: "Alert!", message: "Do you want to save \(self.team?.team_name ?? "")",preferredStyle: .alert)
+            let alert = UIAlertController(title: "Saving!", message: "Do you want to save \(self.team?.team_name ?? "")",preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes",style: .default,handler: {(_: UIAlertAction!) in
                 teamDetailsViewModel.insertTeam(favouriteName: (self.team?.team_name)!, favouriteId: (self.team?.team_key)!, sportType: self.sportType!)
-                self.btn.isEnabled = false
+                self.btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 
             }))
             alert.addAction(UIAlertAction(title: "No",style: .default,handler: {(_: UIAlertAction!) in

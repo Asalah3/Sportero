@@ -158,6 +158,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 if image1 == nil{
                     image1 = ""
                 }
+                cell?.teamOneImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell?.teamOneImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "player"))
                 cell?.teamOneLabel.text = upComingEvents?.result?[indexPath.row].event_first_player
                 
@@ -165,6 +166,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 if image2 == nil{
                     image2 = ""
                 }
+                cell?.teamTwoImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell?.teamTwoImage.sd_setImage(with: URL(string:image2!), placeholderImage: UIImage(named: "player"))
                 cell?.teamTwoLabel.text = upComingEvents?.result?[indexPath.row].event_second_player
                 
@@ -179,6 +181,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 if image1 == nil{
                     image1 = ""
                 }
+                cell?.teamOneImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell?.teamOneImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                 cell?.teamOneLabel.text = upComingEvents?.result?[indexPath.row].event_home_team
                 
@@ -186,6 +189,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 if image2 == nil{
                     image2 = ""
                 }
+                cell?.teamTwoImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell?.teamTwoImage.sd_setImage(with: URL(string:image2!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                 cell?.teamTwoLabel.text = upComingEvents?.result?[indexPath.row].event_away_team
                 cell?.date.text = upComingEvents?.result?[indexPath.row].event_date_start!
@@ -197,6 +201,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 if image1 == nil{
                     image1 = ""
                 }
+                cell?.teamOneImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell?.teamOneImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                 cell?.teamOneLabel.text = upComingEvents?.result?[indexPath.row].event_home_team
                 
@@ -204,6 +209,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 if image2 == nil{
                     image2 = ""
                 }
+                cell?.teamTwoImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell?.teamTwoImage.sd_setImage(with: URL(string:image2!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                 cell?.teamTwoLabel.text = upComingEvents?.result?[indexPath.row].event_away_team
                     cell?.date.text = upComingEvents?.result?[indexPath.row].event_date
@@ -217,6 +223,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 if image1 == nil{
                     image1 = ""
                 }
+                cell?.teamOneImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell?.teamOneImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                 cell?.teamOneLabel.text = upComingEvents?.result?[indexPath.row].event_home_team
                 
@@ -224,6 +231,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 if image2 == nil{
                     image2 = ""
                 }
+                cell?.teamTwoImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell?.teamTwoImage.sd_setImage(with: URL(string:image2!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                 cell?.teamTwoLabel.text = upComingEvents?.result?[indexPath.row].event_away_team
                 
@@ -264,6 +272,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                     if image1 == nil{
                         image1 = ""
                     }
+                    cell?.teamOneImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                     cell?.teamOneImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                     cell?.teamOneLabel.text = cricketLatestResults?.result[indexPath.row].eventHomeTeam
                     
@@ -271,6 +280,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                     if image2 == nil{
                         image2 = ""
                     }
+                    cell?.teamTwoImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                     cell?.teamTwoImage.sd_setImage(with: URL(string:image2!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                     cell?.teamTwoLabel.text = cricketLatestResults?.result[indexPath.row].eventAwayTeam
                     
@@ -288,6 +298,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 if image1 == nil{
                     image1 = ""
                 }
+                cell?.teamOneImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell?.teamOneImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                 cell?.teamOneLabel.text = latestResults?.result?[indexPath.row].event_home_team
                 
@@ -295,6 +306,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                 if image2 == nil{
                     image2 = ""
                 }
+                cell?.teamTwoImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell?.teamTwoImage.sd_setImage(with: URL(string:image2!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
                 cell?.teamTwoLabel.text = latestResults?.result?[indexPath.row].event_away_team
                 
@@ -319,6 +331,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
             if image1 == nil{
                 image1 = ""
             }
+            cell2?.teamImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
             cell2?.teamImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
             return cell2!
         }else if sport == "tennis"{
@@ -329,6 +342,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
             if image1 == nil{
                 image1 = ""
             }
+            cell2?.teamImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
             cell2?.teamImage.sd_setImage(with: URL(string:image1!), placeholderImage: UIImage(named: "ball_\(sport ?? "")"))
             return cell2!
         }

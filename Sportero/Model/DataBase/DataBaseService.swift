@@ -41,6 +41,25 @@ class FavouriteItems{
             
         }
     }
+    func deleteItemById(favouriteId : Int){
+        var favouriteItem : NSManagedObject?
+        var favouritesList : [NSManagedObject]?
+        favouritesList = FavouriteItems.favouriteItems.fetchFavouriteItems()
+        favouritesList?.forEach{ data in
+            let favId = data.value(forKey: "favouriteId") as! Int
+            if favId == favouriteId{
+                favouriteItem = data
+                do {
+                    context?.delete(favouriteItem!)
+                    try context?.save()
+                } catch {
+                    print("Failed")
+                    
+                }
+            }
+        }
+        
+    }
     
     func fetchFavouriteItems() -> [NSManagedObject]{
         var favouritesList : [NSManagedObject]?

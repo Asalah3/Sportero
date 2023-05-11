@@ -24,10 +24,6 @@ class TennisPlayerDetailsViewController: UIViewController {
         let tennisPlayerDetailsViewModel = TennisPlayerDetailsViewModel()
         if tennisPlayerDetailsViewModel.isExist(favouriteId: playerId){
             btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            btn.isEnabled = false
-        }
-        else {
-            btn.isEnabled = true
         }
     }
     override func viewDidLoad() {
@@ -60,17 +56,24 @@ class TennisPlayerDetailsViewController: UIViewController {
     @IBAction func addPlayerToFavourite(_ sender: Any) {
         
         if tennisPlayerDetailsViewModel.isExist(favouriteId: playerId){
-            btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            btn.isEnabled = false
+            let alert = UIAlertController(title: "Alert!", message: "Do you want to delete \((self.player?.result[0].playerName)!) ",preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete",style: .destructive,handler: {(_: UIAlertAction!) in
+                self.tennisPlayerDetailsViewModel.deleteItemById(favouriteId: (self.player?.result[0].playerKey)!)
+                self.btn.setImage(UIImage(systemName: "heart"), for: .normal)
+            }))
+            alert.addAction(UIAlertAction(title: "No",style: .cancel,handler: {(_: UIAlertAction!) in
+                alert.dismiss(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
         else {
-            let alert = UIAlertController(title: "Alert!", message: "Do you want to save this \(self.player?.result[0].playerName ?? "")",preferredStyle: .alert)
+            let alert = UIAlertController(title: "Saving!", message: "Do you want to save this \(self.player?.result[0].playerName ?? "")",preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes",style: .default,handler: {(_: UIAlertAction!) in
                 self.tennisPlayerDetailsViewModel.insertPlayer(favouriteName: (self.player?.result[0].playerName)!, favouriteId: (self.player?.result[0].playerKey)!, sportType: "tennis")
-                self.btn.isEnabled = false
+                self.btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 
             }))
-            alert.addAction(UIAlertAction(title: "No",style: .default,handler: {(_: UIAlertAction!) in
+            alert.addAction(UIAlertAction(title: "No",style: .cancel,handler: {(_: UIAlertAction!) in
                 alert.dismiss(animated: true)
             }))
             self.present(alert, animated: true, completion: nil)
