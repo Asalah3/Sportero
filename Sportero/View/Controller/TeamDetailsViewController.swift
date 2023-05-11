@@ -17,6 +17,8 @@ class TeamDetailsViewController: UIViewController ,UITableViewDelegate , UITable
     var team : TeamsResult?
     var flag : Bool?
     override func viewWillAppear(_ animated: Bool) {
+        self.title = team?.team_name
+        
         let teamDetailsViewModel = TeamDetailsViewModel()
         if teamDetailsViewModel.isExist(favouriteId: (team?.team_key)!){
             btn.isEnabled = false

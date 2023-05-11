@@ -17,13 +17,13 @@ class LeagueViewController: UIViewController , UITableViewDelegate , UITableView
     var searching = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = sport!
         tableView.separatorStyle = .none
         leaguesViewModel = LeaguesViewModel()
         leaguesViewModel.getLeaguesResult(sportType: sport!)
         leaguesViewModel.bindResultToLeagueViewController = {() in
             DispatchQueue.main.async {
                 self.leagues  = self.leaguesViewModel.leaguesResult
-//                self.leaguesResult = self.leagues?.result
                 self.tableView.reloadData()
             }
         }
@@ -64,16 +64,21 @@ class LeagueViewController: UIViewController , UITableViewDelegate , UITableView
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var leagueId = 0
+        var leagueName = ""
         if searching {
             leagueId = leaguesResult[indexPath.row].leagueKey
+            leagueName = leaguesResult[indexPath.row].leagueName
         }else{
             leagueId = (leagues?.result[indexPath.row].leagueKey)!
+            leagueName = (leagues?.result[indexPath.row].leagueName)!
         }
         
         if InternetConnection().isConnectedToNetwork() == true{
             let leagueDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsViewController") as! LeagueDetailsViewController
             leagueDetailsViewController.sport = sport
             leagueDetailsViewController.leagueId = leagueId
+            leagueDetailsViewController.leagueName = leagueName
+            
             
             navigationController?.pushViewController(leagueDetailsViewController, animated: true)
         }else{

@@ -10,7 +10,7 @@ import UIKit
 class OnBoardingViewController: UIViewController {
     var slides : [OnBoardingSlide] = [
         OnBoardingSlide(description: "Sportero let You Watch Leagues , In Each League You Can Watch UpComing Events ,Latest Result and Teams", image: UIImage(named: "sportero")!),
-        OnBoardingSlide(description: "You Can Add Teams Or Players To Favourite ", image: UIImage(named: "background")!)]
+        OnBoardingSlide(description: "You Can Add Teams Or Players To Favourite to View Them Later ", image: UIImage(named: "background")!)]
     
     var currentPage = 0 {
         didSet {

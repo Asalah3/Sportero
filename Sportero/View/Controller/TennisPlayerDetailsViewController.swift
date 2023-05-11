@@ -44,6 +44,8 @@ class TennisPlayerDetailsViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.player  = self?.tennisPlayerDetailsViewModel.playerResult
                 self?.playerName.text = self?.player?.result[0].playerName
+                self!.title = self?.player?.result[0].playerName
+
                 self?.playerCountry.text = self?.player?.result[0].playerCountry ?? "There is no data"
                 self?.playerBD.text = self?.player?.result[0].playerBday ?? "There is no data"
                 var image1 = self?.player?.result[0].playerLogo

@@ -43,7 +43,7 @@
 		C9BA75CA2A001CCA00E33557 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BA75C82A001CCA00E33557 /* LaunchScreen.storyboard */; };
 		C9CC78C32A006E3A0083001E /* SportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC78C22A006E3A0083001E /* SportsCollectionViewCell.swift */; };
 		C9CC78CD2A0088DD0083001E /* FootballTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC78CC2A0088DD0083001E /* FootballTableViewCell.swift */; };
-		C9E12CEA2A0A793200911B60 /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E12CE92A0A793200911B60 /* PageModel.swift */; };
+		C9E12CEA2A0A793200911B60 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E12CE92A0A793200911B60 /* OnBoarding.swift */; };
 		C9E238072A0C01A500A37409 /* no_data_found.json in Resources */ = {isa = PBXBuildFile; fileRef = C9E238062A0C01A500A37409 /* no_data_found.json */; };
 		C9E540A52A040C940062003A /* LatestResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E540A42A040C940062003A /* LatestResultCollectionViewCell.swift */; };
 		C9E540A92A0443370062003A /* TeamsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E540A82A0443370062003A /* TeamsCollectionViewCell.swift */; };
@@ -106,7 +106,7 @@
 		C9BA75CB2A001CCA00E33557 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9CC78C22A006E3A0083001E /* SportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C9CC78CC2A0088DD0083001E /* FootballTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballTableViewCell.swift; sourceTree = "<group>"; };
-		C9E12CE92A0A793200911B60 /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
+		C9E12CE92A0A793200911B60 /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
 		C9E238062A0C01A500A37409 /* no_data_found.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = no_data_found.json; sourceTree = "<group>"; };
 		C9E540A42A040C940062003A /* LatestResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		C9E540A82A0443370062003A /* TeamsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -295,7 +295,7 @@
 		C9F7A3AF2A05BCAF00C5D0E1 /* Pojos */ = {
 			isa = PBXGroup;
 			children = (
-				C9E12CE92A0A793200911B60 /* PageModel.swift */,
+				C9E12CE92A0A793200911B60 /* OnBoarding.swift */,
 				C96DC7AB2A02F46A00DB9306 /* Leagues.swift */,
 				C9E540AA2A0457A90062003A /* Teams.swift */,
 				C92D02F02A07D8340089FF37 /* Fixtures.swift */,
@@ -489,7 +489,7 @@
 				C934D2BB2A03F4AA007121DB /* UpComingEventsCollectionViewCell.swift in Sources */,
 				C9CC78CD2A0088DD0083001E /* FootballTableViewCell.swift in Sources */,
 				C91C671A2A003D270083F438 /* SportsViewController.swift in Sources */,
-				C9E12CEA2A0A793200911B60 /* PageModel.swift in Sources */,
+				C9E12CEA2A0A793200911B60 /* OnBoarding.swift in Sources */,
 				C9E540A92A0443370062003A /* TeamsCollectionViewCell.swift in Sources */,
 				C9F2820C2A081F10003C84A0 /* LeagueDetailsViewModel.swift in Sources */,
 				C9E540A52A040C940062003A /* LatestResultCollectionViewCell.swift in Sources */,

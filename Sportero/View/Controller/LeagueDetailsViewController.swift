@@ -18,6 +18,7 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
     var tennisTeams : [Int] = []
     var leagueId : Int?
     var sport : String?
+    var leagueName : String?
     @IBOutlet weak var noData: AnimationView!
     @IBOutlet weak var noDataLatest: AnimationView!
     @IBOutlet weak var noDataTeams: AnimationView!
@@ -29,14 +30,10 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
         latestResultCollectionView.reloadData()
         teamsCollectionView.reloadData()
         noDataTeams.isHidden = true
-        /*UpComingCollectionView.isHidden = true
-        noData.contentMode = .scaleAspectFit
-        noData.loopMode = .loop
-        noData.play()*/
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = leagueName
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         self.UpComingCollectionView.collectionViewLayout = layout
@@ -143,7 +140,6 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
             return latestResults?.result?.count ?? 0
         }
         if sport == "tennis" {
-            print("count \(tennisTeams.count)")
             return tennisTeams.count
         }
         return teams?.result.count ?? 0
@@ -327,7 +323,6 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
             return cell2!
         }else if sport == "tennis"{
             cell2?.teamImage.image = UIImage(named: "player")
-            print("\(tennisTeams[indexPath.row])")
             return cell2!
         }else{
             var image1 = teams?.result[indexPath.row].team_logo
