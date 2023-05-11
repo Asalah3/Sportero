@@ -15,11 +15,6 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
     var favouritesList : [NSManagedObject]?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.separatorStyle = .none
         favouriteViewModel = FavouriteViewModel()
         favouriteViewModel.getFavouritesResult()
         favouritesList = favouriteViewModel.Result
@@ -29,7 +24,32 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             imgError.image = UIImage(systemName: "icloud.slash")
             imgError.tintColor = UIColor.orange
             self.view.addSubview(imgError)
+            let label = UILabel(frame: CGRect(x: imgError.frame.minX, y: imgError.frame.maxY + 15, width: imgError.frame.width, height: 30))
+            label.text = "There is no Favourites"
+            label.textAlignment = .center
+            label.textColor = UIColor.orange
+            self.view.addSubview(label)
         }
+        self.tableView.reloadData()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.separatorStyle = .none
+        /*favouriteViewModel = FavouriteViewModel()
+        favouriteViewModel.getFavouritesResult()
+        favouritesList = favouriteViewModel.Result
+        if favouritesList?.count == 0{
+            tableView.isHidden = true
+            let imgError = UIImageView(frame: CGRect(x: tableView.frame.width/4, y: tableView.frame.height / 2, width: tableView.frame.width/2, height: tableView.frame.height / 4))
+            imgError.image = UIImage(systemName: "icloud.slash")
+            imgError.tintColor = UIColor.orange
+            self.view.addSubview(imgError)
+            let label = UILabel(frame: CGRect(x: imgError.frame.minX, y: imgError.frame.maxY + 15, width: imgError.frame.width, height: 30))
+            label.text = "There is no Favourites"
+            label.textAlignment = .center
+            label.textColor = UIColor.orange
+            self.view.addSubview(label)
+        }*/
         self.tableView.reloadData()
     }
     

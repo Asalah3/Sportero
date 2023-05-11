@@ -127,26 +127,9 @@ class LeagueDetailsViewController: UIViewController ,UICollectionViewDelegate , 
                         self.noDataTeams.play()
                     }
                 }
-                /*else {
-                    if self.tennisTeams.count == 0{
-                        self.teamsCollectionView.isHidden = true
-                        self.noDataTeams.isHidden = false
-                        self.noDataTeams.contentMode = .scaleAspectFit
-                        self.noDataTeams.loopMode = .loop
-                        self.noDataTeams.play()
-                    }
-                }*/
                 self.teamsCollectionView.reloadData()
             }
         }
-        /*if self.tennisTeams.count != 0 {
-            self.teamsCollectionView.isHidden = false
-            /*self.noDataTeams.isHidden = false
-            self.noDataTeams.contentMode = .scaleAspectFit
-            self.noDataTeams.loopMode = .loop
-            self.noDataTeams.play()*/
-        }*/
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

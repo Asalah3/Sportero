@@ -14,6 +14,8 @@
 		C91C67182A003B130083F438 /* splash_screen.json in Resources */ = {isa = PBXBuildFile; fileRef = C91C67172A003B130083F438 /* splash_screen.json */; };
 		C91C671A2A003D270083F438 /* SportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91C67192A003D270083F438 /* SportsViewController.swift */; };
 		C91C671C2A00468F0083F438 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91C671B2A00468F0083F438 /* FavouriteViewController.swift */; };
+		C91EE4092A0D11AE00C12342 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91EE4082A0D11AE00C12342 /* DateUtils.swift */; };
+		C91EE40B2A0D13DE00C12342 /* DateUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91EE40A2A0D13DE00C12342 /* DateUtilsTest.swift */; };
 		C92D02F12A07D8340089FF37 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D02F02A07D8340089FF37 /* Fixtures.swift */; };
 		C92D02F32A07D8830089FF37 /* LiveScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D02F22A07D8830089FF37 /* LiveScore.swift */; };
 		C934D2BB2A03F4AA007121DB /* UpComingEventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C934D2BA2A03F4AA007121DB /* UpComingEventsCollectionViewCell.swift */; };
@@ -72,6 +74,8 @@
 		C91C67172A003B130083F438 /* splash_screen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash_screen.json; sourceTree = "<group>"; };
 		C91C67192A003D270083F438 /* SportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewController.swift; sourceTree = "<group>"; };
 		C91C671B2A00468F0083F438 /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		C91EE4082A0D11AE00C12342 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		C91EE40A2A0D13DE00C12342 /* DateUtilsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilsTest.swift; sourceTree = "<group>"; };
 		C92D02F02A07D8340089FF37 /* Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
 		C92D02F22A07D8830089FF37 /* LiveScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveScore.swift; sourceTree = "<group>"; };
 		C934D2BA2A03F4AA007121DB /* UpComingEventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingEventsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 			children = (
 				C94B28FF2A0AD5EB00723731 /* UserDefaults+Extension.swift */,
 				C99B9DE82A0BCD73008DC0E5 /* NetworkManager.swift */,
+				C91EE4082A0D11AE00C12342 /* DateUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				C9AC19342A0850F200391A61 /* NetworkServicesTest.swift */,
 				C9AC19362A086C1300391A61 /* MokeNetworkServices.swift */,
 				C9AC193E2A087FB500391A61 /* MokeNetworkServicesTests.swift */,
+				C91EE40A2A0D13DE00C12342 /* DateUtilsTest.swift */,
 			);
 			path = SporteroTests;
 			sourceTree = "<group>";
@@ -457,6 +463,7 @@
 				C9AC192C2A084F9900391A61 /* SporteroTests.swift in Sources */,
 				C9AC193F2A087FB500391A61 /* MokeNetworkServicesTests.swift in Sources */,
 				C9AC19372A086C1300391A61 /* MokeNetworkServices.swift in Sources */,
+				C91EE40B2A0D13DE00C12342 /* DateUtilsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +484,7 @@
 				C94B28FC2A0A923E00723731 /* OnBoardingViewController.swift in Sources */,
 				C9BA75BB2A001CC800E33557 /* AppDelegate.swift in Sources */,
 				C9AC19242A08481C00391A61 /* TeamDetailsViewModel.swift in Sources */,
+				C91EE4092A0D11AE00C12342 /* DateUtils.swift in Sources */,
 				C902B6F32A06B53F0058DEAC /* TennisPlayerDetailsViewController.swift in Sources */,
 				C934D2BB2A03F4AA007121DB /* UpComingEventsCollectionViewCell.swift in Sources */,
 				C9CC78CD2A0088DD0083001E /* FootballTableViewCell.swift in Sources */,

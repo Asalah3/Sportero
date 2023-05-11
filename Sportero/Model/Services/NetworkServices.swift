@@ -79,17 +79,17 @@ class NetworkServices : NetworkServicesProtocol{
         task.resume()
     }
     func fetchFixturesResult(sport : String,leagueId : Int ,compilitionHandler : @escaping (Fixtures?)-> Void) {
-        let todayDate = Date()
-        let calender = Calendar.current
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        dateFormatter.locale = Locale(identifier: "en")
-        let weekStart = calender.date(byAdding: .day, value: 10, to: todayDate)
-        let today = dateFormatter.string(from: todayDate)
-        let weekAhead = dateFormatter.string(from: weekStart!)
+//        let todayDate = Date()
+//        let calender = Calendar.current
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "YYYY-MM-dd"
+//        dateFormatter.locale = Locale(identifier: "en")
+//        let weekStart = calender.date(byAdding: .day, value: 10, to: todayDate)
+//        let today = dateFormatter.string(from: todayDate)
+//        let weekAhead = dateFormatter.string(from: weekStart!)
         
         
-        let url = URL(string: "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leagueId)&APIkey=963d29cf248e5645a1d194a9fca0c26304519aa57383aeadfc6bf6a954af3d92&from=\(today)&to=\(weekAhead)")
+        let url = URL(string: "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leagueId)&APIkey=963d29cf248e5645a1d194a9fca0c26304519aa57383aeadfc6bf6a954af3d92&from=\(DateUtils.getCurrentDate())&to=\(DateUtils.getToDate())")
         guard let newUrl = url else {
             return
         }

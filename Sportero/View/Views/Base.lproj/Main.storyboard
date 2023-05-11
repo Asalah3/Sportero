@@ -300,7 +300,6 @@
                                                 <constraint firstItem="PyU-YG-cGY" firstAttribute="height" secondItem="JTU-Pq-w46" secondAttribute="height" multiplier="0.9" id="xdq-FL-yNV"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <connections>
                                             <outlet property="favouriteView" destination="PyU-YG-cGY" id="8Ge-JM-Vcs"/>
                                             <outlet property="nameLabel" destination="KU9-lu-qC5" id="AfT-Eq-ZGd"/>
@@ -1084,9 +1083,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
