@@ -350,7 +350,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="c4D-5f-NKB">
-                                <rect key="frame" x="5" y="59" width="383" height="759"/>
+                                <rect key="frame" x="5" y="161" width="383" height="657"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="glV-qu-cb4" customClass="FootballTableViewCell" customModule="Sportero" customModuleProvider="target">
@@ -407,17 +407,33 @@
                                     <outlet property="delegate" destination="wAO-Ab-bcV" id="XB0-00-R09"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uhr-Dt-tNM">
+                                <rect key="frame" x="0.0" y="95" width="393" height="56"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="wAO-Ab-bcV" id="Rli-FX-1J8"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7wi-dI-nq1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7wi-dI-nq1" firstAttribute="trailing" secondItem="c4D-5f-NKB" secondAttribute="trailing" constant="5" id="ERQ-Gi-pvi"/>
-                            <constraint firstItem="c4D-5f-NKB" firstAttribute="top" secondItem="7wi-dI-nq1" secondAttribute="top" id="XBY-W8-8mB"/>
+                            <constraint firstItem="Uhr-Dt-tNM" firstAttribute="top" secondItem="7wi-dI-nq1" secondAttribute="top" constant="36" id="KQW-je-Vl0"/>
+                            <constraint firstItem="7wi-dI-nq1" firstAttribute="trailing" secondItem="Uhr-Dt-tNM" secondAttribute="trailing" id="c3b-l3-WPf"/>
                             <constraint firstItem="7wi-dI-nq1" firstAttribute="bottom" secondItem="c4D-5f-NKB" secondAttribute="bottom" id="oHa-UX-nA6"/>
                             <constraint firstItem="c4D-5f-NKB" firstAttribute="leading" secondItem="7wi-dI-nq1" secondAttribute="leading" constant="5" id="psn-U4-gFc"/>
+                            <constraint firstItem="Uhr-Dt-tNM" firstAttribute="leading" secondItem="7wi-dI-nq1" secondAttribute="leading" id="rSR-F4-Enl"/>
+                            <constraint firstItem="c4D-5f-NKB" firstAttribute="top" secondItem="Uhr-Dt-tNM" secondAttribute="bottom" constant="10" id="zE2-EK-fgY"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="Uhr-Dt-tNM" id="1OI-ou-79c"/>
                         <outlet property="tableView" destination="c4D-5f-NKB" id="CCH-1f-75k"/>
                     </connections>
                 </viewController>
@@ -1048,6 +1064,7 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="1fX-XR-Ajo"/>
         <designable name="Hpz-O2-PQv"/>
         <designable name="ckg-Pt-K82"/>
         <designable name="rhC-2T-HWg"/>

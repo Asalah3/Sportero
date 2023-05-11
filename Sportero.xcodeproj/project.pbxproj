@@ -157,6 +157,15 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
+		C91EE4072A0CFF3000C12342 /* Lotties */ = {
+			isa = PBXGroup;
+			children = (
+				C9E238062A0C01A500A37409 /* no_data_found.json */,
+				C91C67172A003B130083F438 /* splash_screen.json */,
+			);
+			path = Lotties;
+			sourceTree = "<group>";
+		};
 		C92D02F42A0805910089FF37 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,11 +238,9 @@
 		C9BA75B92A001CC800E33557 /* Sportero */ = {
 			isa = PBXGroup;
 			children = (
-				C9E238062A0C01A500A37409 /* no_data_found.json */,
 				C92D02F42A0805910089FF37 /* ViewModel */,
 				C9F7A3AE2A05BC9E00C5D0E1 /* Model */,
 				C9F7A3AC2A05BC5C00C5D0E1 /* View */,
-				C91C67172A003B130083F438 /* splash_screen.json */,
 				C9BA75BA2A001CC800E33557 /* AppDelegate.swift */,
 				C9BA75BC2A001CC800E33557 /* SceneDelegate.swift */,
 				C9BA75C62A001CCA00E33557 /* Assets.xcassets */,
@@ -246,6 +253,7 @@
 		C9F7A3AC2A05BC5C00C5D0E1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C91EE4072A0CFF3000C12342 /* Lotties */,
 				C99B9DE32A0BC665008DC0E5 /* Views */,
 				C9F7A3AD2A05BC8100C5D0E1 /* Controller */,
 			);
