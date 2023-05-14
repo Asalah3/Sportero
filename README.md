@@ -64,3 +64,35 @@ Sportero is a sports application that:
    <img src="https://github.com/Asalah3/Sportero/assets/88517428/e9ef61b8-540c-4989-bf48-817737fd54c2" alt="Build Status" width="300">
    <img src="https://github.com/Asalah3/Sportero/assets/88517428/73a4ce19-3336-44fd-baee-d88b3f076fdf" alt="Build Status" width="300">
 </p>
+
+## DarkMode ScreenShots
+<p align="center">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/2e85869d-dad0-444a-93b8-37faf3bd9b9d" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/f3f44db4-4c40-4e13-995a-d80716eec4ba" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/424b4188-aaed-4938-bb48-3a25da641181" alt="Build Status" width="300">
+</p>
+<p align="center">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/9268ccd2-c44b-42cc-bfb2-93bb29a93a7c" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/53ddd2d0-5ae1-4750-bed0-744ce6cce993" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/cd5149bc-def9-4a2e-879a-e1098bd49d23" alt="Build Status" width="300">
+</p>
+<p align="center">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/b200a619-b04d-4d38-85f0-dbe167f7526e" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/b555927f-363c-4f8b-bd26-4357a0a2dc9b" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/fa5e1cfb-03c1-42e1-86c5-5ef52c70ab88" alt="Build Status" width="300">
+</p>
+<p align="center">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/413b49c6-0cf4-4304-bf28-74c93e401912" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/2f08a648-a5d9-4323-8b88-0c9a14e434a1" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/2328e617-33b3-40a2-b61e-dd46d7619592" alt="Build Status" width="300">
+</p>
+<p align="center">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/32c6e7b1-00e6-4d4c-842b-a3d0671ce989" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/68fa870c-33de-48ee-bde0-60be7574faaf" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/c082ab1d-9a84-451c-addb-cc6d55a97306" alt="Build Status" width="300">
+</p>
+<p align="center">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/f8c0aff0-7702-4de1-a498-d41e9628050e" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/172f4767-b75b-4f12-852b-91ceb5799f24" alt="Build Status" width="300">
+   <img src="https://github.com/Asalah3/Sportero/assets/88517428/d26aca2e-378e-43fc-b586-0bf1b63eb10e)" alt="Build Status" width="300">
+</p>
