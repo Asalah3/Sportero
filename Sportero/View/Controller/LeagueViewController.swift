@@ -11,6 +11,7 @@ import SDWebImage
 class LeagueViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    var activiyIndicator  = UIActivityIndicatorView()
     var leaguesViewModel : LeaguesViewModel!
     var sport : String?
     var leagues : Leagues?
@@ -20,12 +21,21 @@ class LeagueViewController: UIViewController , UITableViewDelegate , UITableView
         super.viewDidLoad()
         self.title = sport!
         tableView.separatorStyle = .none
+        activiyIndicator.center = self.view.center
+        activiyIndicator.hidesWhenStopped = true
+        activiyIndicator.style = .large
+        activiyIndicator.color = UIColor.orange
+        view.addSubview(activiyIndicator)
+        activiyIndicator.startAnimating()
+        self.view.isUserInteractionEnabled = false
         leaguesViewModel = LeaguesViewModel()
         leaguesViewModel.getLeaguesResult(sportType: sport!)
         leaguesViewModel.bindResultToLeagueViewController = {() in
             DispatchQueue.main.async {
                 self.leagues  = self.leaguesViewModel.leaguesResult
                 self.tableView.reloadData()
+                self.activiyIndicator.stopAnimating()
+                self.view.isUserInteractionEnabled = true
             }
         }
     }
@@ -51,7 +61,7 @@ class LeagueViewController: UIViewController , UITableViewDelegate , UITableView
                 image = ""
             }
             cell?.footballImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            cell?.footballImage.sd_setImage(with: URL(string:image!), placeholderImage: UIImage(named: sport!))
+            cell?.footballImage.sd_setImage(with: URL(string:image!), placeholderImage: UIImage(named: "league"))
             return cell!
         }else{
             cell?.footballTitle.text = leagues?.result[indexPath.row].leagueName
@@ -60,7 +70,7 @@ class LeagueViewController: UIViewController , UITableViewDelegate , UITableView
                 image = ""
             }
             cell?.footballImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            cell?.footballImage.sd_setImage(with: URL(string:image!), placeholderImage: UIImage(named: sport!))
+            cell?.footballImage.sd_setImage(with: URL(string:image!), placeholderImage: UIImage(named: "league"))
             return cell!
         }
         
