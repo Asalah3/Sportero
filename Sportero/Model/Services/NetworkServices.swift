@@ -14,9 +14,30 @@ protocol NetworkServicesProtocol {
     func fetchTeamsResult(sport: String, leagueId: Int, compilitionHandler: @escaping (Teams?) -> Void)
     func fetchSingleTeamResult(sport: String, teamId: Int, compilitionHandler: @escaping (Teams?) -> Void)
     func fetchTennisPlayerResult(playerId: Int, compilitionHandler: @escaping (TennisPlayer?) -> Void)
+    func fetchFootballPlayerResult(playerId: Int, compilitionHandler: @escaping (FootballPlayer?) -> Void)
 }
 
 class NetworkServices : NetworkServicesProtocol{
+    func fetchFootballPlayerResult(playerId: Int, compilitionHandler: @escaping (FootballPlayer?) -> Void) {
+        let url = URL(string: "https://apiv2.allsportsapi.com/football/?met=Players&playerId=\(playerId)&APIkey=74239ff4b0776dba5295debe45f7691ae79a6ed3ce907cacb868ab9107212fd4")
+        guard let newUrl = url else {
+            return
+        }
+        let request = URLRequest(url: newUrl)
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: request){ data,response , error in
+            do{
+                let result = try JSONDecoder().decode(FootballPlayer.self, from: data ?? Data())
+                compilitionHandler(result)
+            }catch let error{
+                print(error.localizedDescription)
+                compilitionHandler(nil)
+            }
+            
+        }
+        task.resume()
+    }
+    
     func fetchTennisPlayerResult(playerId: Int, compilitionHandler: @escaping (TennisPlayer?) -> Void) {
         let url = URL(string: "https://apiv2.allsportsapi.com/tennis/?met=Players&playerId=\(playerId)&APIkey=74239ff4b0776dba5295debe45f7691ae79a6ed3ce907cacb868ab9107212fd4")
         guard let newUrl = url else {

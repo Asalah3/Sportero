@@ -61,9 +61,22 @@ class TeamDetailsViewController: UIViewController ,UITableViewDelegate , UITable
         cell?.playerImage.sd_setImage(with: URL(string:image!), placeholderImage: UIImage(named: "player"))
         return cell!
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let playerId = team?.players?[indexPath.row].player_key
+        let playerNum = team?.players?[indexPath.row].player_number
+        let playerViewController = self.storyboard?.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
+        playerViewController.playerId = playerId ?? 0
+        var x = Int(playerNum!)
+        playerViewController.playerNum = x!
+        navigationController?.pushViewController(playerViewController, animated: true)
+        
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
 
     @IBAction func addToFavourites(_ sender: Any) {
         let teamDetailsViewModel = TeamDetailsViewModel()

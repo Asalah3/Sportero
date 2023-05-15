@@ -19,6 +19,7 @@ struct TeamsResult: Codable {
 }
 
 struct Player: Codable{
+    var player_key : Int
     var player_name: String?
     var player_type: String?
     var player_number: String?
